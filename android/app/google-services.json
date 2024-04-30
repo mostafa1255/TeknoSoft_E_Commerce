@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "107010375137",
+    "project_id": "internshipecommerce-73944",
+    "storage_bucket": "internshipecommerce-73944.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:107010375137:android:76bd38e0e260cd06e126a0",
+        "android_client_info": {
+          "package_name": "com.example.e_commerce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "107010375137-gtod3mn44bfvtpufhecurj1m5ptnie9v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQMMz5VcOyZ0m9jF2_V6iGri0JYXCxHFQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "107010375137-gtod3mn44bfvtpufhecurj1m5ptnie9v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
