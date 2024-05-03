@@ -3,21 +3,25 @@ import 'package:e_commerce/app/core/styles/text_Style.dart';
 import 'package:e_commerce/app/core/widgets/customMainButton.dart';
 import 'package:e_commerce/app/features/cart/manager/cart_Cubit/cart_cubit.dart';
 import 'package:e_commerce/app/features/check_out/manager/Stripe_Payment_Cubit/stripe_payment_cubit.dart';
+import 'package:e_commerce/app/features/order/manager/cubit/order_cubit.dart';
+import 'package:e_commerce/app/features/upload_product/data/models/Products_Model.dart';
 import 'package:e_commerce/app/router/app_routing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-
 class BottomNavBarCheckOutScreen extends StatelessWidget {
   const BottomNavBarCheckOutScreen({
     super.key,
     required this.total,
+    required this.products,
   });
   final String total;
+  final List<ProductsModel> products;
 
   @override
   Widget build(BuildContext context) {
+    var orderCubit = BlocProvider.of<OrderCubit>(context);
     return Container(
       width: double.infinity,
       height: 250.h,
@@ -72,10 +76,13 @@ class BottomNavBarCheckOutScreen extends StatelessWidget {
             BlocListener<StripePaymentCubit, StripePaymentState>(
               listener: (context, state) async {
                 if (state is StripePaymentSucsess) {
+                  await orderCubit.putAllOrdersProducts(
+                    productsModel: products,
+                  );
+                  await BlocProvider.of<CartCubit>(context)
+                      .deleteAllCartItems(cartItems: products);
                   GoRouter.of(context)
                       .pushReplacement(AppRouter.successPayment);
-                  await BlocProvider.of<CartCubit>(context)
-                      .deleteAllCartItems();
                 }
               },
               child: CustomMainButton(

@@ -83,14 +83,16 @@ class CartCubit extends Cubit<CartState> {
     );
   }
 
-  Future<void> deleteAllCartItems() async {
-    await dataBase
+  Future<void> deleteAllCartItems({required List<ProductsModel> cartItems}) async {
+    final batch = FirebaseFirestore.instance.batch();
+    final userCartRef = FirebaseFirestore.instance
         .collection("cart")
-        .doc(auth.currentUser!.uid)
-        .collection("products")
-        .doc()
-        .delete();
-    print("deleted");
-    await getCartProducts();
+        .doc(auth.currentUser!.uid);
+    for (final cartItem in cartItems) {
+      final productId = cartItem.id; // Assuming this is the ID of the product
+      final productRef = userCartRef.collection("products").doc(productId);
+      batch.delete(productRef);
+    }
+    await batch.commit();
   }
 }

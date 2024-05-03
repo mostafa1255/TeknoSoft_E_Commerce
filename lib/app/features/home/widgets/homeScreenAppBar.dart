@@ -1,6 +1,7 @@
 import 'package:e_commerce/app/core/functions/determine_current_location.dart';
 import 'package:e_commerce/app/core/styles/App_Colors.dart';
 import 'package:e_commerce/app/core/styles/text_Style.dart';
+import 'package:e_commerce/app/core/widgets/CustomDeterminedCurrenLocation.dart';
 import 'package:e_commerce/app/router/app_routing.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -20,29 +21,7 @@ AppBar homeScreenAppBar(BuildContext context) {
             color: AppColors.kGreyColorB81,
           ),
         ),
-        FutureBuilder(
-          future: determineCurrentLocation(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return Text(
-                snapshot.data!,
-                style: Txtstyle.style14(context: context).copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
-              );
-            }
-            return Center(
-              child: Text(
-                "Loading...",
-                style: Txtstyle.style14(context: context).copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
-              ),
-            );
-          },
-        )
+        const CustomDeterminedCurrenLocation()
       ],
     ),
     actions: [
@@ -57,9 +36,13 @@ AppBar homeScreenAppBar(BuildContext context) {
             color: AppColors.kGreyColorB81,
           )),
       IconButton(
-          onPressed: () {},
+          onPressed: () {
+            GoRouter.of(context).push(
+              AppRouter.order,
+            );
+          },
           icon: const Icon(
-            FontAwesomeIcons.bell,
+            Icons.shopping_bag_outlined,
             color: AppColors.kGreyColorB81,
           )),
     ],

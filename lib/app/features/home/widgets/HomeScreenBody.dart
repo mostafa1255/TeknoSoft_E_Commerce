@@ -20,7 +20,9 @@ class HomeScreenBody extends StatelessWidget {
         builder: (context, state) {
           if (state is FetchingAllProducts ||
               state is FetchingProductsByCategory) {
-            return const Center(child: Lottie_Loading_Animation());
+            return const Center(
+              
+              child: Lottie_Loading_Animation());
           } else if (state is AllProductsFetched) {
             return WidgetsReturnFromSuccessStatesHomeScreen(
               products: state.products,

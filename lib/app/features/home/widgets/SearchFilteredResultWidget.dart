@@ -1,7 +1,6 @@
 import 'package:e_commerce/app/core/styles/text_Style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../core/styles/App_Colors.dart';
 import '../logic/functions/saveItemToSearchSharedPreference.dart';
 

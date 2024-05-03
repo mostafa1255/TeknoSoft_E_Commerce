@@ -22,7 +22,7 @@ class CustomCartIcon extends StatelessWidget {
           ),
           onPressed: onPressed,
           icon: const Icon(
-            Icons.shopping_cart,
+            Icons.shopping_cart_checkout_outlined,
             color: AppColors.kFontColor,
           ),
         ));
