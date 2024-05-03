@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../styles/App_Colors.dart';
-import '../styles/App_Image.dart';
 
 class CustomCartIcon extends StatelessWidget {
   const CustomCartIcon({

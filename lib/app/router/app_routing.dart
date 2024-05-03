@@ -12,6 +12,7 @@ import 'package:e_commerce/app/features/home/logic/manager/cubit/home_cubit.dart
 import 'package:e_commerce/app/features/home/screens/home_screen.dart';
 import 'package:e_commerce/app/features/order/manager/cubit/order_cubit.dart';
 import 'package:e_commerce/app/features/order/screen/order_screen.dart';
+import 'package:e_commerce/app/features/profile/screens/profile_screen.dart';
 import 'package:e_commerce/app/features/upload_product/data/models/Products_Model.dart';
 import 'package:e_commerce/app/features/upload_product/screen/upload_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -80,6 +81,10 @@ abstract class AppRouter {
     GoRoute(
       path: uploadProduct,
       builder: (context, state) => const UploadProductScreen(),
+    ),
+    GoRoute(
+      path: profile,
+      builder: (context, state) => const ProfileScreen(),
     ),
     GoRoute(
       path: order,
